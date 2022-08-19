@@ -11,16 +11,25 @@
     {{item}}
   </div>
   <ul>
-    <li v-for="(item, index) in list">
+    <li v-for="(item, index) in  handle(list)">
       <div>{{index+"."+item.name}}</div>
       <div>{{item.num}}</div>
     </li>
+  </ul>
+  <ul>
+    <template v-for="(item,index) in handle(list)">
+      <div>{{index + "." + item.name}}</div>
+      <div>{{item.num}}</div>
+    </template>
   </ul>
   <ol>
     <li v-for="(value,key,index) in preson" :key="index">
       {{key}}:{{value}}
     </li>
   </ol>
+  <button @click="click">
+    逆序
+  </button>
 </div>
 <script>
   const App = {
@@ -52,6 +61,14 @@
           num: "151xxxxxxxx",
           emali: "xxxx@xx.com"
         }
+      }
+    },
+    methods: {
+      click() {
+        this.list.reverse()
+      },
+      handle(l) {
+        return l.filter(obj => obj.name != "墨鱼老师")
       }
     }
   }
