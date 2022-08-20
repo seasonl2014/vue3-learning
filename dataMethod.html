@@ -7,7 +7,9 @@
 </head>
 <body>
 <div id="Application">
-
+    <div>{{type}}</div>
+    <div>{{typeFunc()}}</div>
+    <button @click="add">Add</button>
 </div>
 <script>
     // 定义组件
@@ -17,27 +19,41 @@
                 count: 0,
             }
         },
+        // computed选项定义计算属性
+        computed: {
+            type: {
+            // 实现计算属性的get方法，用来取值
+            get() {
+                return this.count > 10 ? "大" : "小"
+            },
+            // 实现计算属性的set方法，用来设置值
+            set(newValue) {
+                if (newValue == "大") {
+                    this.count = 11
+                } else {
+                    this.count = 0
+                }
+            }
+        }
+        },
         methods: {
             add() {
                 this.count ++
+            },
+            typeFunc() {
+                return this.count > 10 ? "大" : "小"
             }
         }
     }
     // 创建组件并获取到组件实例
     let instance = Vue.createApp(App).mount("#Application")
-    // 可以获取到组件中的data数据
-     console.log(instance.count)
-    // 可以获取到组件中的data数据
-     console.log(instance.$data.count)
-    // 修改属性
-    instance.count = 5
-    // 下面获取到的count的值为5
+    // 初始值为0
     console.log(instance.count)
-    console.log(instance.$data.count)
-    // 0
-    console.log(instance.count)
-    instance.add()
-    // 1
+    // 初始状态为“小”
+    console.log(instance.type)
+    // 对计算属性进行修改
+    instance.type = "大"
+    // 打印结果为11
     console.log(instance.count)
 </script>
 </body>
