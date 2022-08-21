@@ -11,10 +11,14 @@
   <div @dblclick="dblclick">双击事件</div>
   <input @focus="focus" @blur="blur" @change="change" @select="select"/>
   <div @mousedown="mousedown">鼠标按下</div>
+  <div @mousedown.ctrl="mousedown">鼠标按下</div>
+  <div @mousedown.ctrl.exact="mousedown">鼠标按下</div>
   <div @mouseup="mouseup">鼠标抬起</div>
   <div @mousemove="mousemove">鼠标移动</div>
   <div @mouseout="mouseout" @mouseover="mouseover">鼠标移入移出</div>
   <input @keydown="keydown" @keyup="keyup"/>
+  <input @keyup.enter="keyup"></input>
+  <input @keyup.alt.enter="keyup"></input>
 </div>
 <script>
   const App = {
@@ -55,8 +59,11 @@
       keydown(){
         console.log("键盘按键按下")
       },
-      keyup(){
+      keyup(event){
         console.log("键盘按键抬起")
+        if (event.key == 'Enter') {
+          console.log("回车键被点击")
+        }
       }
     }
   }
