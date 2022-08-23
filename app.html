@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue组件生命周期</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<script>
+  const App = Vue.createApp({})
+  // 配置全局数据
+  App.config.globalProperties = {
+    version:"1.0.0"
+  }
+  const sub = {
+    mounted () {
+      // 在任意组件的任意地方都可以通过this直接访问全局数据
+      console.log(this.version)
+    }
+  }
+</script>
+</body>
+</html>

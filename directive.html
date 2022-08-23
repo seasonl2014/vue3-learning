@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <title>Vue组件自定义指令</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="Application">
+  <input v-getfocus:coustom="1" />
+</div>
+<script>
+  const App = Vue.createApp({})
+  App.directive('getfocus', {
+    // 当被绑定此指令的元素被挂在时调用
+    mounted (element,param) {
+      if(param.value=="1"){
+        element.focus()
+      }
+      console.log("参数："+param.arg)
+
+    }
+  })
+  const sub = {
+    directives: {
+      getfocus: {
+        mounted(el){
+          el.focus()
+        }
+      }
+    },
+    mounted() {
+      // 组件挂载
+      console.log(this.version)
+    }
+  }
+  App.mount("#Application")
+</script>
+</body>
+</html>
