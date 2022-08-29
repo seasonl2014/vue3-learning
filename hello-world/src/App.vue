@@ -1,14 +1,27 @@
 <template>
-  <Weather></Weather>
+  <el-container>
+    <el-header height="80px">
+      <router-view name="topBar"></router-view>
+    </el-header>
+    <el-main>
+      <router-view></router-view>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
-import Weather from './components/Weather.vue'
 
 export default {
   name: 'App',
-  components: {
-    Weather
+  methods: {
+    toUser() {
+      this.$router.push({
+        name: 'user',
+        params: {
+          username: '小王'
+        }
+      })
+    }
   }
 }
 </script>
