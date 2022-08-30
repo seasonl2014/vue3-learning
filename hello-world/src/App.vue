@@ -1,27 +1,13 @@
 <template>
-  <el-container>
-    <el-header height="80px">
-      <router-view name="topBar"></router-view>
-    </el-header>
-    <el-main>
-      <router-view></router-view>
-    </el-main>
-  </el-container>
+ <ElTimeSelect></ElTimeSelect>
 </template>
 
 <script>
-
+import ElTimeSelect from './components/ElTimeSelect'
 export default {
   name: 'App',
-  methods: {
-    toUser() {
-      this.$router.push({
-        name: 'user',
-        params: {
-          username: '小王'
-        }
-      })
-    }
+  components:{
+    ElTimeSelect
   }
 }
 </script>
