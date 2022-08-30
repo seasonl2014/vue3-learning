@@ -1,5 +1,5 @@
 <template>
-  <h1>计数器1:{{ this.$store.state.helloWorld1.count1 }}</h1>
+  <h1>计数器2:{{ this.$store.state.helloWorld2.count2 }}</h1>
   <button @click="increment">增加</button>
 </template>
 <script>
@@ -7,11 +7,10 @@ export default {
   methods: {
     increment() {
       this.$store.commit({
-        type:'helloWorld1/increment1',
-        count: 2
+        type:'helloWorld2/increment2',
+        count:2
       })
     }
   }
 }
 </script>
-
