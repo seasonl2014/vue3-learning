@@ -1,13 +1,13 @@
 <template>
- <ElTimeSelect></ElTimeSelect>
+ <ElDialog></ElDialog>
 </template>
 
 <script>
-import ElTimeSelect from './components/ElTimeSelect'
+import ElDialog from './components/ElDialog'
 export default {
   name: 'App',
   components:{
-    ElTimeSelect
+    ElDialog
   }
 }
 </script>
